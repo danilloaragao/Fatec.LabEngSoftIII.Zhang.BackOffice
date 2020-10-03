@@ -2,23 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
-import { TemasComponent } from './temas.component';
-import { TemasRoutingModule } from './temas.routing.module';
+import { ExperienciasComponent } from './experiencias.component';
+import { ExperienciasRoutingModule } from './experiencias.routing.module';
 
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        TemasRoutingModule
+        ExperienciasRoutingModule
     ],
     exports: [
-        TemasComponent
+        ExperienciasComponent
     ],
     declarations: [
-        TemasComponent
+        ExperienciasComponent
     ],
     providers: [],
 })
 
-export class TemasModule {}
+export class ExperienciasModule {}

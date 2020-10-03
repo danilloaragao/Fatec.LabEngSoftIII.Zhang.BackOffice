@@ -8,6 +8,7 @@ import { LoginModule } from './telas/login/login.module';
 import { PalavrasModule } from './telas/palavras/palavras.module';
 import { SkinsModule } from './telas/skins/skins.module';
 import { TemasModule } from './telas/temas/temas.module';
+import { ExperienciasModule } from './telas/experiencias/experiencias.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TemasModule } from './telas/temas/temas.module';
     LoginModule,
     PalavrasModule,
     SkinsModule,
-    TemasModule
+    TemasModule,
+    ExperienciasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

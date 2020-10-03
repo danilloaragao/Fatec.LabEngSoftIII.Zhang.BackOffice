@@ -7,6 +7,7 @@ import { AdministradorComponent } from './telas/administrador/administrador.comp
 import { PalavrasComponent } from './telas/palavras/palavras.component';
 import { SkinsComponent } from './telas/skins/skins.component';
 import { TemasComponent } from './telas/temas/temas.component';
+import { ExperienciasComponent } from './telas/experiencias/experiencias.component';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
   {path:'palavras', component: PalavrasComponent},
   {path:'skins', component: SkinsComponent},
   {path:'temas', component: TemasComponent},
-  {path:'**', redirectTo: ''},
+  {path:'experiencias', component: ExperienciasComponent},
+  // {path:'**', redirectTo: ''},
 ];
 
 @NgModule({

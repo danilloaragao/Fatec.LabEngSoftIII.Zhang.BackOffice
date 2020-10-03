@@ -3,18 +3,26 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { PalavrasComponent } from './palavras.component';
+import { PalavrasRoutingModule } from './palavras.routing.module';
+import { AlteracaoComponent } from './alteracao/alteracao.component';
+import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        PalavrasRoutingModule
     ],
     exports: [
         PalavrasComponent
     ],
     declarations: [
-        PalavrasComponent
+        PalavrasComponent,
+        AlteracaoComponent,
+        PesquisaComponent,
+        CadastroComponent
     ],
     providers: [],
 })
