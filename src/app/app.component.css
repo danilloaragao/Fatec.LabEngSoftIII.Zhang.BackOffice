@@ -1,0 +1,12 @@
+.logo{
+    max-height: 100%;
+}
+
+.menu{
+    /* background-image: url('..\\assets\\fundo_menu.jpg'); */
+    background-color: #00001f
+}
+
+.item-menu{
+    font-weight: bolder;
+}
