@@ -9,6 +9,7 @@ import { PalavrasModule } from './telas/palavras/palavras.module';
 import { SkinsModule } from './telas/skins/skins.module';
 import { TemasModule } from './telas/temas/temas.module';
 import { ExperienciasModule } from './telas/experiencias/experiencias.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ExperienciasModule } from './telas/experiencias/experiencias.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AdministradorModule,
     LoginModule,
