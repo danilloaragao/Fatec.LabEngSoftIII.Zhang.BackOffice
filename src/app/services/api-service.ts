@@ -14,6 +14,6 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   teste(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/Jogo/Palavra`)
+    return this.http.get(`${this.baseUrl}Jogo/Palavra`)
   }
 }
