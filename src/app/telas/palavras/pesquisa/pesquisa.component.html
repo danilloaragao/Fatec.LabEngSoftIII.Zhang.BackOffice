@@ -1,1 +1,13 @@
-<p>pesquisa works!</p>
+<nav class="nav-bar sub">
+    <div class="nav-wrapper menu sub">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li [routerLink]="['todas']" routerLinkActive="active"><a class="item-menu">Todas</a></li>
+        <li [routerLink]="['porId']" routerLinkActive="active"><a class="item-menu">Por Id</a></li>
+        <li [routerLink]="['porTrecho']" routerLinkActive="active"><a class="item-menu">Por Trecho</a></li>
+        <li [routerLink]="['porTema']" routerLinkActive="active"><a class="item-menu">Por Tema</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="corpo">
+      <router-outlet></router-outlet>
+  </div>

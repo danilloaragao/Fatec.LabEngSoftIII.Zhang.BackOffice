@@ -1,4 +1,7 @@
-p{
-    color: white;
-    font-weight: bolder;
+.menu{
+    background-color: #00003b
+}
+
+.active{
+    background-color: #00005b
 }
