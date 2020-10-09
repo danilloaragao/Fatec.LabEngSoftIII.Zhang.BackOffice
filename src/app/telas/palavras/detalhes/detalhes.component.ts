@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import Palavra from 'src/app/interfaces/palavra';
 import Tema from 'src/app/interfaces/tema';
 import { LocalStorageService } from 'src/app/services/storage-service';
-import { PalavrasComponent } from '../palavras.component';
 
 @Component({
   selector: 'app-detalhes',

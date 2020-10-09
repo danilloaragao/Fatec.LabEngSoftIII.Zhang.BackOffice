@@ -1,0 +1,30 @@
+.delete{
+    color: red;
+}
+
+.atualizar{
+    color: green;
+}
+
+
+.cardContent{
+    padding-top: 0px !important;
+}
+
+.partesCorpo{
+    height: 130px;
+    width: 130px;
+    border: black 1px solid;
+    border-radius: 15px;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+}
+
+.linha-imagens{
+    display: flex;
+    justify-content: center;
+}

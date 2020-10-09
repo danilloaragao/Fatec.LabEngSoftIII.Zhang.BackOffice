@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import Skin from 'src/app/interfaces/skin';
+import { ApiService } from 'src/app/services/api-service';
+import { LocalStorageService } from 'src/app/services/storage-service';
 
 @Component({
   selector: 'app-skins',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skins.component.css']
 })
 export class SkinsComponent {
+  @Input() listaSkins: Skin[]
 
-  constructor() { }
+  constructor(private apiService: ApiService, private storage: LocalStorageService) {
+    let token = this.storage.get('token')
 
-  ngOnInit(): void {
+    this.apiService.pegarSkins(token).subscribe(
+      dados => {
+        this.listaSkins = dados
+      }
+    )
+
   }
-
 }

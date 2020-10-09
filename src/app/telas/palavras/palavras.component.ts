@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import Palavra from 'src/app/interfaces/palavra';
-import Tema from 'src/app/interfaces/tema';
 import { ApiService } from 'src/app/services/api-service';
 import { LocalStorageService } from 'src/app/services/storage-service';
 
