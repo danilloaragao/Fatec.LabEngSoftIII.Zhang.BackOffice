@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="col s12 m12 center">
+        <div class="card">
+                <div class="row">
+                    <div class="input-field col s1 m1">
+                        <input *ngIf="this.alteracao" [(ngModel)]="this.palavra.id" itemid="this.palavra.Id" type="text" class="validate center">
+                        <span *ngIf="this.alteracao" >ID</span>
+                    </div>
+                    <div class="input-field col s2 m2">
+                        <select  class="browser-default">
+                            <option value="" disabled selected>{{this.temaAtual.descricao}}</option>
+                            <option *ngFor="let tema of this.temas" itemid="tema.id" [value]="tema.id">{{tema.descricao}}</option>
+                          </select>
+                          
+                        <span for="last_name">Tema</span>
+                    </div>
+                    <div class="input-field col s2 m2">
+                        <input [(ngModel)]="this.palavra.palavra" itemid="palavra" type="text" class="validate center">
+                        <span>Palavra</span>
+                    </div>
+                    <div class="input-field col s3 m3">
+                        <input [(ngModel)]="this.palavra.dica1" itemid="dica1" type="text" class="validate center">
+                        <span>Dica 1</span>
+                    </div>
+                    <div class="input-field col s3 m3">
+                        <input [(ngModel)]="this.palavra.dica2" itemid="dica2" type="text" class="validate center">
+                        <span >Dica 2</span>
+                    </div>
+                    <div class="input-field col s1 m1">
+                        <i-feather class="atualizar" name="edit-3"></i-feather><br>
+                        <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" (click)="teste()"></i-feather>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+</div>

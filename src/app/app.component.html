@@ -1,6 +1,5 @@
 <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<nav class="nav-bar">
+<nav *ngIf="this.logado" class="nav-bar">
   <div class="nav-wrapper menu">
     <img [routerLink]="['/']" src="../assets/logo_branco.png" class="brand-logo right logo_nav logo">
     <!-- <a href="#" class="brand-logo right"></a> -->

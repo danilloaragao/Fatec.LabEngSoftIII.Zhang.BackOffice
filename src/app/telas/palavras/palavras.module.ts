@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FeatherModule } from 'angular-feather';
+import { Trash2, Edit3 } from 'angular-feather/icons';
 
 import { RouterModule } from '@angular/router';
 import { PalavrasComponent } from './palavras.component';
-import { PalavrasRoutingModule } from './palavras.routing.module';
-import { AlteracaoComponent } from './alteracao/alteracao.component';
-import { PesquisaComponent } from './pesquisa/pesquisa.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { DetalhesComponent } from './detalhes/detalhes.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         RouterModule,
-        PalavrasRoutingModule
+        FeatherModule.pick({ Trash2, Edit3 })
     ],
     exports: [
-        PalavrasComponent
+        PalavrasComponent,
+        FeatherModule
     ],
     declarations: [
         PalavrasComponent,
-        AlteracaoComponent,
-        PesquisaComponent,
-        CadastroComponent
+        DetalhesComponent
     ],
     providers: [],
 })

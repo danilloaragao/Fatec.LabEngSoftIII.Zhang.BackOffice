@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalStorageService } from './services/storage-service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private storage: LocalStorageService) {
+  }
+
   title = 'Z-Hang - Backoffice';
+  logado = !!this.storage.get('token')
 }

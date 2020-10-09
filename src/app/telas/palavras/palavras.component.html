@@ -1,13 +1,3 @@
-<nav class="nav-bar sub">
-    <div class="nav-wrapper menu sub">
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <span [routerLink]="['/palavras']" class="brand-logo right logo_nav logo">PALAVRAS</span>
-        <li [routerLink]="['pesquisa']" routerLinkActive="active"><a class="item-menu">Pesquisa</a></li>
-        <li [routerLink]="['cadastro']" routerLinkActive="active"><a class="item-menu">Cadastro</a></li>
-        <li [routerLink]="['alteracao']" routerLinkActive="active"><a class="item-menu">Alteração</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="corpo">
-      <router-outlet></router-outlet>
-  </div>
+<app-detalhes [alteracao]='false' ></app-detalhes>
+<app-detalhes *ngFor="let palavra of listaPalavras" itemid="palavra.id" [palavra]="palavra" [alteracao]='true'></app-detalhes>
+

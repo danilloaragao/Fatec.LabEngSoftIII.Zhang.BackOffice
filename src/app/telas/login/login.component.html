@@ -7,19 +7,19 @@
                     <h5 class="header center">LOGIN</h5>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="login" type="text" class="validate">
+                            <input [(ngModel)]="this.credenciais.Login" id="login" type="text" class="validate">
                             <label for="login">Login</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="senha" type="password" class="validate">
+                            <input  [(ngModel)]="this.credenciais.Senha" id="senha" type="password" class="validate">
                             <label for="senha">Senha</label>
                         </div>
                     </div>
                 </div>
                 <div class="card-action center">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Entrar</button>
+                    <button class="btn waves-effect waves-light" type="submit" name="action" (click)="logar()">Entrar</button>
                 </div>
             </div>
         </div>
