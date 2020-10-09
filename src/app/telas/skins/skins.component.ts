@@ -19,6 +19,5 @@ export class SkinsComponent {
         this.listaSkins = dados
       }
     )
-
   }
 }
