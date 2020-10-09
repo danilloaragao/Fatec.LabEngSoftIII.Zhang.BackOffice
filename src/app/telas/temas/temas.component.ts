@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Tema from 'src/app/interfaces/tema';
+import { ApiService } from 'src/app/services/api-service';
+import { LocalStorageService } from 'src/app/services/storage-service';
 
 @Component({
   selector: 'app-temas',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemasComponent {
 
-  constructor() { }
+  public listaTemas: Tema[]
 
-  ngOnInit() {
+  constructor(private apiService: ApiService, private storage: LocalStorageService) { 
+    let token = this.storage.get('token')
+
+    this.apiService.pegarTemas(token).subscribe(
+      dados => {
+        this.listaTemas = dados
+      }
+    )
   }
+
 
 }
