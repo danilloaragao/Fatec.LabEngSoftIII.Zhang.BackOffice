@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import Palavra from 'src/app/interfaces/palavra';
 import { ApiService } from 'src/app/services/api-service';
 import { LocalStorageService } from 'src/app/services/storage-service';
@@ -12,8 +13,8 @@ export class PalavrasComponent {
 
   public listaPalavras: Palavra[]
 
-  constructor(private apiService: ApiService, private storage: LocalStorageService) {
-    
+  constructor(private apiService: ApiService, private storage: LocalStorageService, private appComponent: AppComponent) {
+    this.appComponent.pagina = 'Palavras'
     let token = this.storage.get('token')
 
     this.apiService.pegarTemas(token).subscribe(

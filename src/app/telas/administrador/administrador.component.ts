@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-administrador',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministradorComponent{
 
-  constructor() { }
+  constructor(private appComponent: AppComponent) {
+    this.appComponent.pagina = 'Administrador'
+   }
 
   ngOnInit(): void {
   }

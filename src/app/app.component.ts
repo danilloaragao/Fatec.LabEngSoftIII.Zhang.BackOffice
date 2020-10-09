@@ -10,6 +10,6 @@ export class AppComponent {
   constructor(private storage: LocalStorageService) {
   }
 
-  title = 'Z-Hang - Backoffice';
-  logado = !!this.storage.get('token')
+  pagina = ''
+  title = 'Z-Hang - Backoffice'
 }
