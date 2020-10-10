@@ -45,4 +45,6 @@ export class DetalheComponent implements OnInit {
     document.querySelector('#cabecaImg')['id'] = `cabecaImg${this.skin.id}`
     document.querySelector('#cabecaDespertaImg')['id'] = `cabecaDespertaImg${this.skin.id}`
   }
+
+  
 }

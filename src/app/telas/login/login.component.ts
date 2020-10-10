@@ -18,7 +18,7 @@ export class LoginComponent {
     this.appComponent.pagina = ''
   }
 
-  public credenciais: Credenciais = { Login: 'SuperUser', Senha: 'SuperUserGrupo2' }
+  public credenciais: Credenciais = { Login: '', Senha: '' }
 
   async logar() {
     this.apiService.login(this.credenciais).subscribe(

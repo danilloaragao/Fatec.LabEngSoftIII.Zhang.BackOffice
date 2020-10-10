@@ -3,8 +3,8 @@
         <div class="card">
             <div class="row">
                 <div class="input-field col s1 m1">
-                    <input *ngIf="this.alteracao" [(ngModel)]="this.skin.id" itemid="this.skin.Id"
-                        type="text" class="validate center">
+                    <input *ngIf="this.alteracao" [(ngModel)]="this.skin.id" itemid="this.skin.Id" type="text"
+                        class="validate center">
                     <span *ngIf="this.alteracao">ID</span>
                 </div>
 
@@ -29,14 +29,17 @@
                 </div>
 
                 <div class="input-field col s1 m1">
-                    <i-feather class="atualizar" name="edit-3"></i-feather><br>
-                    <i-feather class="delete" name="trash-2"></i-feather>
+                    <i-feather *ngIf="!this.alteracao" class="atualizar" name="edit-3" (click)="inserir()"></i-feather>
+                    <br>
+                    <i-feather *ngIf="this.alteracao" class="atualizar" name="edit-3" (click)="alterar()"></i-feather>
+                    <br>
+                    <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" (click)="deletar()"></i-feather>
                 </div>
             </div>
             <div class="linha-imagens">
                 <div class="input-field col s4 m4">
                     <div class="partesCorpo">
-                        <img id="cabecaDespertaImg"/>
+                        <img id="cabecaDespertaImg" />
                         <br>
                         <span>Cabeça Desperta</span>
                     </div>
@@ -95,5 +98,4 @@
 
         </div>
     </div>
-
 </div>

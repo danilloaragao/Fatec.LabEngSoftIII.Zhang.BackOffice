@@ -65,7 +65,7 @@ export class DetalhesComponent implements OnInit {
 
   deletar(){
     let token = this.storage.get('token')
-    this.apiService.deletarPalavra(token, this.palavra).subscribe(
+    this.apiService.deletarPalavra(token, this.palavra.id).subscribe(
       resp =>{
         alert('Palavra deletada com sucesso.')
         this.router.navigate['palavras']

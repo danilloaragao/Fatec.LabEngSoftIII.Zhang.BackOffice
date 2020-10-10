@@ -17,8 +17,11 @@
                     <span>Valor</span>
                 </div>
                 <div class="input-field col s1 m1">
-                    <i-feather class="atualizar" name="edit-3"></i-feather><br>
-                    <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" ></i-feather>
+                    <i-feather *ngIf="!this.alteracao" class="atualizar" name="edit-3" (click)="inserir()"></i-feather>
+                    <br>
+                    <i-feather *ngIf="this.alteracao" class="atualizar" name="edit-3" (click)="alterar()"></i-feather>
+                    <br>
+                    <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" (click)="deletar()"></i-feather>
                 </div>
             </div>
         </div>
