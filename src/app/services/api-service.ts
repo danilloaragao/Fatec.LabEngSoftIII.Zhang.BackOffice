@@ -43,6 +43,28 @@ export class ApiService {
     }
     return this.http.get<Palavra[]>(`${this.baseUrl}Administracao/Palavras`, hdr)
   }
+
+  gravarPalavra(token: string, palavra:Palavra) {
+    let hdr = {
+      headers: new HttpHeaders({ "token": token })
+    }
+    return this.http.post<string>(`${this.baseUrl}Administracao/Palavra`, palavra, hdr)
+  }
+
+  alterarPalavra(token: string, palavra:Palavra) {
+    let hdr = {
+      headers: new HttpHeaders({ "token": token })
+    }
+    return this.http.put<string>(`${this.baseUrl}Administracao/Palavra`, palavra, hdr)
+  }
+
+  deletarPalavra(token: string, palavra:Palavra) {
+    let options = {
+      headers: new HttpHeaders({ "token": token, "accept": "text/plain" })
+    }
+    return this.http.delete<string>(`${this.baseUrl}Administracao/Palavra/${palavra.id}`, options)
+  }
+
   //#endregion
 
   //#region Experiencia

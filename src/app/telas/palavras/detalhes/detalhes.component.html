@@ -7,8 +7,8 @@
                         <span *ngIf="this.alteracao" >ID</span>
                     </div>
                     <div class="input-field col s2 m2">
-                        <select  class="browser-default">
-                            <option value="" disabled selected>{{this.temaAtual.descricao}}</option>
+                        <select class="browser-default" (change)="selecaoTema($event.target.value)">
+                            <option value="this.temaAtual.id" disabled selected>{{this.temaAtual.descricao}}</option>
                             <option *ngFor="let tema of this.temas" itemid="tema.id" [value]="tema.id">{{tema.descricao}}</option>
                           </select>
                           
@@ -27,8 +27,9 @@
                         <span >Dica 2</span>
                     </div>
                     <div class="input-field col s1 m1">
-                        <i-feather class="atualizar" name="edit-3"></i-feather><br>
-                        <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" ></i-feather>
+                        <i-feather *ngIf="!this.alteracao" class="atualizar" name="edit-3" (click)="inserir()"></i-feather><br>
+                        <i-feather *ngIf="this.alteracao" class="atualizar" name="edit-3" (click)="alterar()"></i-feather><br>
+                        <i-feather *ngIf="this.alteracao" class="delete" name="trash-2" (click)="deletar()"></i-feather>
                     </div>
                 </div>
             </div>
