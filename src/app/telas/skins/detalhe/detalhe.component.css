@@ -27,4 +27,9 @@ img{
 .linha-imagens{
     display: flex;
     justify-content: center;
+
+}
+
+.card{
+    padding-bottom: 20px !important;
 }

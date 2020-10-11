@@ -28,15 +28,7 @@ export class DetalheComponent implements OnInit {
 
   constructor( ) { }
 
-  ngOnInit(): void {
-    document.querySelector('#bracoDireitoImg')['src'] = `data:image/png;base64, ${this.skin.bracoDireito}`
-    document.querySelector('#bracoEsquerdoImg')['src'] = `data:image/png;base64, ${this.skin.bracoEsquerdo}`
-    document.querySelector('#pernaDireitaImg')['src'] = `data:image/png;base64, ${this.skin.pernaDireita}`
-    document.querySelector('#pernaEsquerdaImg')['src'] = `data:image/png;base64, ${this.skin.pernaEsquerda}`
-    document.querySelector('#corpoImg')['src'] = `data:image/png;base64, ${this.skin.corpo}`
-    document.querySelector('#cabecaImg')['src'] = `data:image/png;base64, ${this.skin.cabeca}`
-    document.querySelector('#cabecaDespertaImg')['src'] = `data:image/png;base64, ${this.skin.cabecaDesperta}`
-    
+  ngOnInit(): void {    
     document.querySelector('#bracoDireitoImg')['id'] = `bracoDireitoImg${this.skin.id}`
     document.querySelector('#bracoEsquerdoImg')['id'] = `bracoEsquerdoImg${this.skin.id}`
     document.querySelector('#pernaDireitaImg')['id'] = `pernaDireitaImg${this.skin.id}`
@@ -44,7 +36,30 @@ export class DetalheComponent implements OnInit {
     document.querySelector('#corpoImg')['id'] = `corpoImg${this.skin.id}`
     document.querySelector('#cabecaImg')['id'] = `cabecaImg${this.skin.id}`
     document.querySelector('#cabecaDespertaImg')['id'] = `cabecaDespertaImg${this.skin.id}`
+
+    this.atualizaPartes()
   }
 
-  
+  uploadParte(imagem, parte){
+    console.log(imagem.files)
+    const file: File = imagem.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const imgBase64 = reader.result.toString().replace('data:image/png;base64,','')
+      this.skin[parte] = imgBase64
+      console.log(this.skin)
+      this.atualizaPartes()
+    }
+  }
+
+  atualizaPartes(){
+    document.querySelector(`#bracoDireitoImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.bracoDireito}`
+    document.querySelector(`#bracoEsquerdoImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.bracoEsquerdo}`
+    document.querySelector(`#pernaDireitaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.pernaDireita}`
+    document.querySelector(`#pernaEsquerdaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.pernaEsquerda}`
+    document.querySelector(`#corpoImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.corpo}`
+    document.querySelector(`#cabecaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.cabeca}`
+    document.querySelector(`#cabecaDespertaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.cabecaDesperta}`
+  }
 }
