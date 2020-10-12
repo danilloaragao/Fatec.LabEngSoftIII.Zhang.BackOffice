@@ -126,6 +126,27 @@ export class ApiService {
     }
     return this.http.get<Skin[]>(`${this.baseUrl}Administracao/Skins`, hdr)
   }
+
+  gravarSkin(token: string, skin:Skin) {
+    let hdr = {
+      headers: new HttpHeaders({ "token": token })
+    }
+    return this.http.post<string>(`${this.baseUrl}Administracao/Skin`, skin, hdr)
+  }
+
+  alterarSkin(token: string, skin:Skin) {
+    let hdr = {
+      headers: new HttpHeaders({ "token": token })
+    }
+    return this.http.put<string>(`${this.baseUrl}Administracao/Skin`, skin, hdr)
+  }
+
+  deletarSkin(token: string, idSkin:number) {
+    let options = {
+      headers: new HttpHeaders({ "token": token, "accept": "text/plain" })
+    }
+    return this.http.delete<string>(`${this.baseUrl}Administracao/Skin/${idSkin}`, options)
+  }
   //#endregion
 
 //#region Administrador

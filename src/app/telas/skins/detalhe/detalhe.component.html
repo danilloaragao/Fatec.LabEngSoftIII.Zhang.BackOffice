@@ -25,9 +25,9 @@
 
                 <div class="input-field col s2 m2">
                     <label>
-                        <input type="checkbox" [(ngModel)]='this.skin.isVip'/>
+                        <input type="checkbox" [(ngModel)]='this.skin.isVip' />
                         <span>Skin Vip</span>
-                      </label>
+                    </label>
                 </div>
 
                 <div class="input-field col s1 m1">
@@ -44,16 +44,11 @@
                         <img id="cabecaDespertaImg" />
                         <br>
                         <span>Cabeça Desperta <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('cabecaDespertaUpload').click();">
+                            <input type="button" value="Upload" id="cabecaDespertaBtn" (click)="clickIndereto('cabecaDespertaUpload')">
 
-                            <input #imageInputCabecaDesperta
-                            id = "cabecaDespertaUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputCabecaDesperta,'cabecaDesperta')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="cabecaDespertaUpload" type="file" accept="image/*"
+                                (change)="uploadParte('cabecaDespertaUpload','cabecaDesperta')"
+                                style='visibility: hidden;'></span>
                     </div>
                 </div>
             </div>
@@ -63,16 +58,10 @@
                         <img id="cabecaImg" />
                         <br>
                         <span>Cabeça <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('cabecaUpload').click();">
+                            <input type="button" value="Upload" id="cabecaBtn" (click)="clickIndereto('cabecaUpload')">
 
-                            <input #imageInputCabeca
-                            id = "cabecaUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputCabeca,'cabeca')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="cabecaUpload" type="file" accept="image/*"
+                                (change)="uploadParte('cabecaUpload','cabeca')" style='visibility: hidden;'></span>
                     </div>
                 </div>
             </div>
@@ -82,16 +71,11 @@
                         <img id="bracoEsquerdoImg" />
                         <br>
                         <span>Braço Esquerdo <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('bracoEsquerdoUpload').click();">
+                            <input type="button" value="Upload" id="bracoEsquerdoBtn" (click)="clickIndereto('bracoEsquerdoUpload')">
 
-                            <input #imageInputBracoEsquerdo
-                            id = "bracoEsquerdoUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputBracoEsquerdo,'bracoEsquerdo')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="bracoEsquerdoUpload" type="file" accept="image/*"
+                                (change)="uploadParte('bracoEsquerdoUpload','bracoEsquerdo')"
+                                style='visibility: hidden;'></span>
                     </div>
                 </div>
                 <div class="input-field col s4 m4">
@@ -99,16 +83,10 @@
                         <img id="corpoImg" />
                         <br>
                         <span>Corpo <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('corpoUpload').click();">
+                            <input type="button" value="Upload" id="corpoUploadBtn" (click)="clickIndereto('corpoUpload')">
 
-                            <input #imageInputCorpo
-                            id = "corpoUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputCorpo,'corpo')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="corpoUpload" type="file" accept="image/*"
+                                (change)="uploadParte('corpoUpload','corpo')" style='visibility: hidden;'></span>
                     </div>
                 </div>
                 <div class="input-field col s3 m3">
@@ -116,16 +94,11 @@
                         <img id="bracoDireitoImg" />
                         <br>
                         <span>Braço Direito <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('bracoDireitoUpload').click();">
+                            <input type="button" value="Upload" id="bracoDireitoBtn" (click)="clickIndereto('bracoDireitoUpload')">
 
-                            <input #imageInputBracoDireito
-                            id = "bracoDireitoUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputBracoDireito,'bracoDireito')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="bracoDireitoUpload" type="file" accept="image/*"
+                                (change)="uploadParte('bracoDireitoUpload','bracoDireito')"
+                                style='visibility: hidden;'></span>
                     </div>
                 </div>
             </div>
@@ -137,16 +110,11 @@
                         <img id="pernaEsquerdaImg" />
                         <br>
                         <span>Perna Esquerda <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('pernaEsquerdaUpload').click();">
+                            <input type="button" value="Upload" id="pernaEsquerdaBtn" (click)="clickIndereto('pernaEsquerdaUpload')">
 
-                            <input #imageInputPernaEsquerda
-                            id = "pernaEsquerdaUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputPernaEsquerda,'pernaEsquerda')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="pernaEsquerdaUpload" type="file" accept="image/*"
+                                (change)="uploadParte('pernaEsquerdaUpload','pernaEsquerda')"
+                                style='visibility: hidden;'></span>
                     </div>
                 </div>
                 <div class="input-field col s3 m3">
@@ -154,20 +122,14 @@
                         <img id="pernaDireitaImg" />
                         <br>
                         <span>Perna Direita <br>
-                            <input type = "button" value = "Upload" 
-                            onclick ="javascript:document.getElementById('pernaDireitaUpload').click();">
+                            <input type="button" value="Upload" id="pernaDireitaBtn" (click)="clickIndereto('pernaDireitaUpload')">
 
-                            <input #imageInputPernaDireita
-                            id = "pernaDireitaUpload"
-                            type="file"
-                            accept="image/*"
-                            (change)="uploadParte(imageInputPernaDireita,'pernaDireita')"
-                            style='visibility: hidden;'
-                            ></span>
+                            <input id="pernaDireitaUpload" type="file" accept="image/*"
+                                (change)="uploadParte('pernaDireitaUpload','pernaDireita')"
+                                style='visibility: hidden;'></span>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

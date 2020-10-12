@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import Skin from 'src/app/interfaces/skin';
+import { ApiService } from 'src/app/services/api-service';
+import { LocalStorageService } from 'src/app/services/storage-service';
 
 @Component({
   selector: 'app-detalhe-skin',
@@ -20,13 +23,13 @@ export class DetalheComponent implements OnInit {
     cabeca: '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',
     cabecaDesperta: '/9j/4AAQSkZJRgABAQEASABIAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAA+ADkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/K8E/wCCgX/BSH4Yf8E2fg9/wlvxG1Z4XvGaHSNGslE2p65OoBMVvFkZwCCzsVRARuYZGfZPHXjXT/hz4J1fxBq862mk6HZTahezt92GGKNpJG/BVJ/Cv49P+Civ7d/in/goz+1R4g+JXiW4uFtb6RrbQdNd8xaJpasTb2yL0B2nfIcZeR3JzwAAfZX7V/8AwdYftEfGPxBcx/DiHw78JfDu5kt44LKPVtUdCeslxOpj3Y5IjiAHYmvG/A3/AAcR/tieBdaW8HxiutYXOWtdW0XT7q3kHoQIVYD/AHWB96+JwMf4dqKAP6Ff+CYH/B0/4X/aD8U6b4J+PWk6V8O/EWoyJbWXiWxlf+wLuVjhY5xIS9mzEgBmeSIk8snGf17juRKMrgg9wcg1/DeRuBBwQRgg8gg9c565r+ib/g1Z/wCCkus/tIfA3Xvgt4z1G41TxB8LbeC40O8uHMk1zo0jGNYXY8sbaQCMEkny5Igfu5oA/W6iiigDw/8A4KW6XNrX/BO747WsLvHLN8P9dClfvZ+wTGv42YW3QxsP4lUj9K/qu/4Lqf8ABT7wj/wT6/Z2g8O+JPDfiDxLe/GDTtX0Kyi01oo0toxa+XLLK8jDgG5iwqgk5PTFfyo20Zgtoo2+Zo41U/gMUAOooooAK/Vn/g0G0yS6/wCCjHjq4VmWO0+Htz5gHRt+oWQXP/fJ/Kvymr7i/wCCEP8AwU38J/8ABL/9pbxH4k8XeG/EHiCx8Y6Za+HxJpTxeZpim8WSSZkkZd4wFwqnPy0Af1ZUU1JPMQMOjDIp1AH4/wD/AAeCfAzUPGH7I/wx8e2cDTWvgXxNNZX5Vc+TDqEIRHb0Xz4IUyeMyD1r+evBB6Hriv7dviT8MPD3xh8Car4X8VaLpviDw7rlu1rf6bqFutxa3cTdUeNgVI4H0wCOQK/mT/4OFP8Agk/Y/wDBOL9pDT9e8CaTLY/CT4gR50qASvOmiX8Sjz7Iu5LbWXE0e4k7S6/8s6APz1ooooAK9O/Yu+BuoftK/tcfDPwDpcDT3XirxNYWRVBnZD56SXDnH8KQJI5PQKhPbnzvRtFvPEesWmn6dZ3OoahqEyW1rbW8ZkluZXYIkaKOS7MVAHqRX9Un/BGv/gjb4G/4J0fBLwzrWp+G9L1D43X2mZ8Q+IpP389rJN8z2dszEiKGPIjJjCmTYWbOcAA+5EXaP88U6iigAr8s/wDg7lmWP/gmH4eVvvSfELTAuTyuLa+Jx36DHHrivub4xftveFfgnZ3k2q2HiC4WxjaWT7JbwuSB1xulX+lfzu/8FzP+C5E//BUXU9L8F+FfD+oeFfhn4N1SW6WPUXRtQ1m/UNAJ5ljZo4kRXcJGrPnzGYtnaqgH550UUUAfQH/BKCZYP+Cnv7Pbsu4D4haN17k3Sgfqc81/YcB/9bHb/PSv4jPhr8QtY+EnxF0DxX4fvG0/X/DOo2+rabcqob7PcQSLLE2DwQGRcg9Rkd6/pa/4Jkf8HDfhH9urwZJaa54J8SeHPG2ipHHrCWXk3WlzSthd8EjypKFY5Ox0yoIG5sZoA/R+iue8B/EWz+IWlfbLGO6jjzjE6qp/8dJrf3Sf3V/76/8ArUAf/9k=',
     nivel: 0,
-    isVip: true,
+    isVip: false,
     valorCash: 0
    }
 
     @Input() alteracao: boolean
 
-  constructor( ) { }
+  constructor(private apiService: ApiService, private storage: LocalStorageService, private router: Router) { }
 
   ngOnInit(): void {    
     document.querySelector('#bracoDireitoImg')['id'] = `bracoDireitoImg${this.skin.id}`
@@ -37,12 +40,20 @@ export class DetalheComponent implements OnInit {
     document.querySelector('#cabecaImg')['id'] = `cabecaImg${this.skin.id}`
     document.querySelector('#cabecaDespertaImg')['id'] = `cabecaDespertaImg${this.skin.id}`
 
+    document.querySelector('#cabecaDespertaUpload')['id'] = `cabecaDespertaUpload${this.skin.id}`
+    document.querySelector('#cabecaUpload')['id'] = `cabecaUpload${this.skin.id}`
+    document.querySelector('#bracoEsquerdoUpload')['id'] = `bracoEsquerdoUpload${this.skin.id}`
+    document.querySelector('#bracoDireitoUpload')['id'] = `bracoDireitoUpload${this.skin.id}`
+    document.querySelector('#corpoUpload')['id'] = `corpoUpload${this.skin.id}`
+    document.querySelector('#pernaEsquerdaUpload')['id'] = `pernaEsquerdaUpload${this.skin.id}`
+    document.querySelector('#pernaDireitaUpload')['id'] = `pernaDireitaUpload${this.skin.id}`
+
     this.atualizaPartes()
   }
 
-  uploadParte(imagem, parte){
-    console.log(imagem.files)
-    const file: File = imagem.files[0];
+  uploadParte(id, parte){
+    const imagem = document.querySelector(`#${id}${this.skin.id}`)
+    const file: File = imagem['files'][0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
@@ -61,5 +72,51 @@ export class DetalheComponent implements OnInit {
     document.querySelector(`#corpoImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.corpo}`
     document.querySelector(`#cabecaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.cabeca}`
     document.querySelector(`#cabecaDespertaImg${this.skin.id}`)['src'] = `data:image/png;base64, ${this.skin.cabecaDesperta}`
+  }
+
+  clickIndereto(idUpload){
+    document.getElementById(`${idUpload}${this.skin.id}`).click()
+  }
+
+  inserir(){
+    let token = this.storage.get('token')
+    this.apiService.gravarSkin(token, this.skin).subscribe(
+      resp =>{
+        alert('Skin inserida com sucesso.')
+        this.router.navigate['skins']
+      },err=>{
+        alert(err.error.text)
+        if(err.error.text == "Skin cadastrada com sucesso")
+        window.location.reload()
+      }
+    )
+  }
+
+  alterar(){
+    let token = this.storage.get('token')
+    this.apiService.alterarSkin(token, this.skin).subscribe(
+      resp =>{
+        alert('Skin alterada com sucesso.')
+        this.router.navigate['skins']
+      },err=>{
+        alert(err.error.text)
+        if(err.error.text == "Skin alterada com sucesso.")
+        window.location.reload()
+      }
+    )
+  }
+
+  deletar(){
+    let token = this.storage.get('token')
+    this.apiService.deletarSkin(token, this.skin.id).subscribe(
+      resp =>{
+        alert('Skin deletada com sucesso.')
+        this.router.navigate['skins']
+      },err=>{
+        alert(err.error.text)
+        if(err.error.text == "Skin deletada com sucesso.")
+        window.location.reload()
+      }
+    )
   }
 }
