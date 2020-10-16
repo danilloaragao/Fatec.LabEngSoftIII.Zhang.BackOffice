@@ -13,53 +13,53 @@ export class DetalheComponent {
   @Input() alteracao: boolean
 
   @Input() tema: Tema = {
-    id:0,
-    descricao:''
+    id: 0,
+    descricao: ''
   }
 
   constructor(private apiService: ApiService, private storage: LocalStorageService, private router: Router) { }
 
-  inserir(){
+  inserir() {
     let token = this.storage.get('token')
     this.apiService.gravarTema(token, this.tema).subscribe(
-      resp =>{
+      resp => {
         alert('Tema cadastrado com sucesso.')
         this.router.navigate['palavras']
-      },err=>{
+      }, err => {
         alert(err.error.text)
-        if(err.error.text == "Tema cadastrado com sucesso")
-        window.location.reload()
+        if (err.error.text == "Tema cadastrado com sucesso")
+          window.location.reload()
       }
     )
   }
 
-  alterar(){
+  alterar() {
     let token = this.storage.get('token')
     this.apiService.alterarTema(token, this.tema).subscribe(
-      resp =>{
+      resp => {
         alert('Tema alterado com sucesso.')
         this.router.navigate['tema']
-      },err=>{
+      }, err => {
         alert(err.error.text)
-        if(err.error.text == "Tema alterado com sucesso.")
-        window.location.reload()
+        if (err.error.text == "Tema alterado com sucesso.")
+          window.location.reload()
       }
     )
   }
 
-  deletar(){
-    let token = this.storage.get('token')
-    this.apiService.deletarTema(token, this.tema.id).subscribe(
-      resp =>{
-        alert('Tema deletado com sucesso.')
-        this.router.navigate['tema']
-      },err=>{
-        alert(err.error.text)
-        if(err.error.text == "Tema deletado com sucesso.")
-        window.location.reload()
-      }
-    )
+  deletar() {
+    if (confirm("Ao deletar um tema, todas as palavras com o tema deletado também serão deletadas.\nDeseja prosseguir com a exclusão?")) {
+      let token = this.storage.get('token')
+      this.apiService.deletarTema(token, this.tema.id).subscribe(
+        resp => {
+          alert('Tema deletado com sucesso.')
+          this.router.navigate['tema']
+        }, err => {
+          alert(err.error.text)
+          if (err.error.text == "Tema deletado com sucesso.")
+            window.location.reload()
+        }
+      )
+    }
   }
-
-
 }
