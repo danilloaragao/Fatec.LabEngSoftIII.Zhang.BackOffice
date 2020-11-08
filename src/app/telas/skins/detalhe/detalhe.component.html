@@ -41,13 +41,13 @@
             <div class="linha-imagens">
                 <div class="input-field col s4 m4">
                     <div class="partesCorpo">
-                        <img id="cabecaDespertaImg" />
+                        <img id="spriteImg" />
                         <br>
-                        <span>Cabeça Desperta <br>
-                            <input type="button" value="Upload" id="cabecaDespertaBtn" (click)="clickIndereto('cabecaDespertaUpload')">
+                        <span>Sprite<br>
+                            <input type="button" value="Upload" id="spriteBtn" (click)="clickIndereto('spriteUpload')">
 
-                            <input id="cabecaDespertaUpload" type="file" accept="image/*"
-                                (change)="uploadParte('cabecaDespertaUpload','cabecaDesperta')"
+                            <input id="spriteUpload" type="file" accept="image/*"
+                                (change)="uploadParte('spriteUpload','sprite')"
                                 style='visibility: hidden;'></span>
                     </div>
                 </div>
@@ -55,78 +55,13 @@
             <div class="linha-imagens">
                 <div class="input-field col s4 m4">
                     <div class="partesCorpo">
-                        <img id="cabecaImg" />
+                        <img id="jumpScareImg" />
                         <br>
-                        <span>Cabeça <br>
-                            <input type="button" value="Upload" id="cabecaBtn" (click)="clickIndereto('cabecaUpload')">
+                        <span>Jump Scare<br>
+                            <input type="button" value="Upload" id="jumpScareBtn" (click)="clickIndereto('jumpScareUpload')">
 
-                            <input id="cabecaUpload" type="file" accept="image/*"
-                                (change)="uploadParte('cabecaUpload','cabeca')" style='visibility: hidden;'></span>
-                    </div>
-                </div>
-            </div>
-            <div class="linha-imagens">
-                <div class="input-field col s3">
-                    <div class="partesCorpo">
-                        <img id="bracoEsquerdoImg" />
-                        <br>
-                        <span>Braço Esquerdo <br>
-                            <input type="button" value="Upload" id="bracoEsquerdoBtn" (click)="clickIndereto('bracoEsquerdoUpload')">
-
-                            <input id="bracoEsquerdoUpload" type="file" accept="image/*"
-                                (change)="uploadParte('bracoEsquerdoUpload','bracoEsquerdo')"
-                                style='visibility: hidden;'></span>
-                    </div>
-                </div>
-                <div class="input-field col s4 m4">
-                    <div class="partesCorpo">
-                        <img id="corpoImg" />
-                        <br>
-                        <span>Corpo <br>
-                            <input type="button" value="Upload" id="corpoUploadBtn" (click)="clickIndereto('corpoUpload')">
-
-                            <input id="corpoUpload" type="file" accept="image/*"
-                                (change)="uploadParte('corpoUpload','corpo')" style='visibility: hidden;'></span>
-                    </div>
-                </div>
-                <div class="input-field col s3 m3">
-                    <div class="partesCorpo">
-                        <img id="bracoDireitoImg" />
-                        <br>
-                        <span>Braço Direito <br>
-                            <input type="button" value="Upload" id="bracoDireitoBtn" (click)="clickIndereto('bracoDireitoUpload')">
-
-                            <input id="bracoDireitoUpload" type="file" accept="image/*"
-                                (change)="uploadParte('bracoDireitoUpload','bracoDireito')"
-                                style='visibility: hidden;'></span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="linha-imagens">
-                <div class="input-field col s3 m3">
-                    <div class="partesCorpo">
-                        <img id="pernaEsquerdaImg" />
-                        <br>
-                        <span>Perna Esquerda <br>
-                            <input type="button" value="Upload" id="pernaEsquerdaBtn" (click)="clickIndereto('pernaEsquerdaUpload')">
-
-                            <input id="pernaEsquerdaUpload" type="file" accept="image/*"
-                                (change)="uploadParte('pernaEsquerdaUpload','pernaEsquerda')"
-                                style='visibility: hidden;'></span>
-                    </div>
-                </div>
-                <div class="input-field col s3 m3">
-                    <div class="partesCorpo">
-                        <img id="pernaDireitaImg" />
-                        <br>
-                        <span>Perna Direita <br>
-                            <input type="button" value="Upload" id="pernaDireitaBtn" (click)="clickIndereto('pernaDireitaUpload')">
-
-                            <input id="pernaDireitaUpload" type="file" accept="image/*"
-                                (change)="uploadParte('pernaDireitaUpload','pernaDireita')"
-                                style='visibility: hidden;'></span>
+                            <input id="jumpScareUpload" type="file" accept="image/*"
+                                (change)="uploadParte('jumpScareUpload','jumpScare')" style='visibility: hidden;'></span>
                     </div>
                 </div>
             </div>
